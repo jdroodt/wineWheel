@@ -24,8 +24,10 @@
 		D27F94691967C23500B32A67 /* TasteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D27F94681967C23500B32A67 /* TasteViewController.m */; };
 		D27F946C1967C39A00B32A67 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D27F946B1967C39A00B32A67 /* MainMenuViewController.m */; };
 		D27F946F1967C83F00B32A67 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D27F946E1967C83F00B32A67 /* backButton.png */; };
-		D27F94711967CED900B32A67 /* wineWheelFull.png in Resources */ = {isa = PBXBuildFile; fileRef = D27F94701967CED900B32A67 /* wineWheelFull.png */; };
 		D27F94731967DB7C00B32A67 /* downButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D27F94721967DB7C00B32A67 /* downButton.png */; };
+		D2DBBFAF197108490059713D /* wineWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DBBFAE197108490059713D /* wineWheel.m */; };
+		D2DBBFB3197156910059713D /* wineWheelStraight.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DBBFB2197156910059713D /* wineWheelStraight.png */; };
+		D2DBBFB9197169C60059713D /* AttributeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DBBFB8197169C60059713D /* AttributeSelector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +64,12 @@
 		D27F946A1967C39A00B32A67 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		D27F946B1967C39A00B32A67 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		D27F946E1967C83F00B32A67 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = SOURCE_ROOT; };
-		D27F94701967CED900B32A67 /* wineWheelFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineWheelFull.png; sourceTree = SOURCE_ROOT; };
 		D27F94721967DB7C00B32A67 /* downButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downButton.png; sourceTree = SOURCE_ROOT; };
+		D2DBBFAD197108490059713D /* wineWheel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wineWheel.h; sourceTree = "<group>"; };
+		D2DBBFAE197108490059713D /* wineWheel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wineWheel.m; sourceTree = "<group>"; };
+		D2DBBFB2197156910059713D /* wineWheelStraight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineWheelStraight.png; sourceTree = SOURCE_ROOT; };
+		D2DBBFB7197169C60059713D /* AttributeSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeSelector.h; sourceTree = "<group>"; };
+		D2DBBFB8197169C60059713D /* AttributeSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeSelector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,14 +130,8 @@
 		D27F94351967C1C000B32A67 /* wineWheel */ = {
 			isa = PBXGroup;
 			children = (
-				D27F94411967C1C000B32A67 /* Main_iPhone.storyboard */,
-				D27F94441967C1C000B32A67 /* Main_iPad.storyboard */,
-				D27F943E1967C1C000B32A67 /* AppDelegate.h */,
-				D27F943F1967C1C000B32A67 /* AppDelegate.m */,
-				D27F946A1967C39A00B32A67 /* MainMenuViewController.h */,
-				D27F946B1967C39A00B32A67 /* MainMenuViewController.m */,
-				D27F94671967C23500B32A67 /* TasteViewController.h */,
-				D27F94681967C23500B32A67 /* TasteViewController.m */,
+				D2DBBFB1197108650059713D /* view controllers */,
+				D2DBBFB01971085A0059713D /* objects */,
 				D27F944A1967C1C000B32A67 /* Images.xcassets */,
 				D27F94361967C1C000B32A67 /* Supporting Files */,
 			);
@@ -170,12 +170,38 @@
 		D27F946D1967C7B400B32A67 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				D27F94701967CED900B32A67 /* wineWheelFull.png */,
+				D2DBBFB2197156910059713D /* wineWheelStraight.png */,
 				D27F946E1967C83F00B32A67 /* backButton.png */,
 				D27F94721967DB7C00B32A67 /* downButton.png */,
 			);
 			name = Images;
 			path = wineWheel;
+			sourceTree = "<group>";
+		};
+		D2DBBFB01971085A0059713D /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				D2DBBFAD197108490059713D /* wineWheel.h */,
+				D2DBBFAE197108490059713D /* wineWheel.m */,
+			);
+			name = objects;
+			sourceTree = "<group>";
+		};
+		D2DBBFB1197108650059713D /* view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D27F94411967C1C000B32A67 /* Main_iPhone.storyboard */,
+				D27F94441967C1C000B32A67 /* Main_iPad.storyboard */,
+				D27F943E1967C1C000B32A67 /* AppDelegate.h */,
+				D27F943F1967C1C000B32A67 /* AppDelegate.m */,
+				D27F946A1967C39A00B32A67 /* MainMenuViewController.h */,
+				D27F946B1967C39A00B32A67 /* MainMenuViewController.m */,
+				D27F94671967C23500B32A67 /* TasteViewController.h */,
+				D27F94681967C23500B32A67 /* TasteViewController.m */,
+				D2DBBFB7197169C60059713D /* AttributeSelector.h */,
+				D2DBBFB8197169C60059713D /* AttributeSelector.m */,
+			);
+			name = "view controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +283,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DBBFB3197156910059713D /* wineWheelStraight.png in Resources */,
 				D27F94461967C1C000B32A67 /* Main_iPad.storyboard in Resources */,
-				D27F94711967CED900B32A67 /* wineWheelFull.png in Resources */,
 				D27F944B1967C1C000B32A67 /* Images.xcassets in Resources */,
 				D27F946F1967C83F00B32A67 /* backButton.png in Resources */,
 				D27F94431967C1C000B32A67 /* Main_iPhone.storyboard in Resources */,
@@ -282,6 +308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DBBFAF197108490059713D /* wineWheel.m in Sources */,
+				D2DBBFB9197169C60059713D /* AttributeSelector.m in Sources */,
 				D27F946C1967C39A00B32A67 /* MainMenuViewController.m in Sources */,
 				D27F94691967C23500B32A67 /* TasteViewController.m in Sources */,
 				D27F94401967C1C000B32A67 /* AppDelegate.m in Sources */,
@@ -504,6 +532,7 @@
 				D27F94631967C1C000B32A67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D27F94641967C1C000B32A67 /* Build configuration list for PBXNativeTarget "wineWheelTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +541,7 @@
 				D27F94661967C1C000B32A67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

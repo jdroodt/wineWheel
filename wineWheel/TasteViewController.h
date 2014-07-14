@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AttributeSelector.h"
 
-@interface TasteViewController : UIViewController <UIScrollViewDelegate> {
+@interface TasteViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate> {
+    float wheelDegree;
+    int currentSegment;
+    NSArray *attributeSelectorArray;
+    
     UIButton *wineWheelButton;
     UIImageView *wineWheelImage;
     UIButton *backButton;
     UIButton *downButton;
     UIScrollView *infoScrollView;
+    BOOL isScoringWine;
     
     CGRect wheelStartFrame;
     CGRect wheelEndFrame;
@@ -21,5 +27,7 @@
     
     float wheelDiameter;
 }
+
+- (IBAction)swipeDetected:(UIGestureRecognizer *)sender;
 
 @end
