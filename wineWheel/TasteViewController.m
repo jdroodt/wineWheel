@@ -31,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self setupPage];
 }
 
@@ -47,6 +46,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:232.0/255.0 green:232.0/255.0 blue:232.0/255.0 alpha:1];
     isScoringWine = NO;
     currentSegment = 0;
+    _completedAttributes = 0;
     
     // scroll view
     scrollViewFrame = CGRectMake(0,(SCREENWIDTH-SCREENWIDTH/5)/2 + 50, SCREENWIDTH, SCREENHEIGHT-(SCREENWIDTH-SCREENWIDTH/5)/2 -50);
@@ -120,7 +120,7 @@
     @"discription of the middle button... this will give the user a bit more info on what it means ",
     @"discription of the right button... this will give the user a bit more info on what it means ",
     nil];
-    AttributeSelector *selector0 = [[AttributeSelector alloc]initWithFrame:CGRectMake(0, 100, 320, 50) andButtonNames:names0 andDiscriptions:dis0];
+    selector0 = [[AttributeSelector alloc]initWithFrame:CGRectMake(0, 100, 320, 50) andButtonNames:names0 andDiscriptions:dis0 andRefViewCon: self];
     [self.view addSubview:selector0];
     
     // aroma
@@ -130,7 +130,7 @@
                     @"discription of the middle button... this will give the user a bit more info on what it means ",
                     @"discription of the right button... this will give the user a bit more info on what it means ",
                     nil];
-    AttributeSelector *selector1 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names1 andDiscriptions:dis1];
+    selector1 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names1 andDiscriptions:dis1 andRefViewCon: self];
     [self.view addSubview:selector1];
     
     // flavour
@@ -140,7 +140,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    AttributeSelector *selector2 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names2 andDiscriptions:dis2];
+    selector2 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names2 andDiscriptions:dis2 andRefViewCon: self];
     [self.view addSubview:selector2];
     
     // complexity
@@ -150,7 +150,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    AttributeSelector *selector3 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names3 andDiscriptions:dis3];
+    selector3 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names3 andDiscriptions:dis3 andRefViewCon: self];
     [self.view addSubview:selector3];
     
     // balance
@@ -160,7 +160,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    AttributeSelector *selector4 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names4 andDiscriptions:dis4];
+    selector4 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names4 andDiscriptions:dis4 andRefViewCon: self];
     [self.view addSubview:selector4];
     
     // texuture
@@ -170,7 +170,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    AttributeSelector *selector5 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names5 andDiscriptions:dis5];
+    selector5 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names5 andDiscriptions:dis5 andRefViewCon: self];
     [self.view addSubview:selector5];
     
     // finish
@@ -180,11 +180,21 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    AttributeSelector *selector6 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names6 andDiscriptions:dis6];
+    selector6 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names6 andDiscriptions:dis6 andRefViewCon: self];
     [self.view addSubview:selector6];
     
     attributeSelectorArray = [[NSArray alloc]initWithObjects:selector0, selector1, selector2, selector3, selector4, selector5, selector6, nil];
     [self hideAllAttributes:NO];
+    
+    scoreButton = [[UIButton alloc] initWithFrame:CGRectMake(90, 30, 140, 50)];
+    scoreButton.backgroundColor = [UIColor colorWithRed:0.5 green:1 blue:0.5 alpha:1];
+    [scoreButton setTitle:@"Check score" forState:UIControlStateNormal];
+    [scoreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [scoreButton addTarget:self action:@selector(openScore) forControlEvents:UIControlEventTouchUpInside];
+    scoreButton.hidden = YES;
+    [self.view addSubview:scoreButton];
+    
+    currentScore = 20;
     
     
     
@@ -206,7 +216,13 @@
     wineWheelImage.hidden = NO;
     wineWheelImage.frame = wineWheelButton.frame;
     [self hideAllAttributes:YES];
-    //[((AttributeSelector *)attributeSelectorArray[0]) unselectedButton];
+    
+    if ([self areAllAttributesFilledIn]) {
+        scoreButton.hidden = NO;
+        scoreButton.alpha = 0;
+    } else {
+        scoreButton.hidden = YES;
+    }
     
     
     // animation
@@ -216,6 +232,7 @@
         downButton.frame = CGRectMake(SCREENWIDTH/2-25, SCREENHEIGHT-60, 50, 50);
         infoScrollView.frame = CGRectMake(0, SCREENHEIGHT, scrollViewFrame.size.width, scrollViewFrame.size.height);
         ((AttributeSelector *)attributeSelectorArray[0]).frame = CGRectMake(0, 100, 320, 50);
+        scoreButton.alpha = 1;
     }];
     
     [infoScrollView setContentOffset:CGPointZero animated:NO];
@@ -230,6 +247,11 @@
     wineWheelImage.hidden = YES;
     wineWheelImage.frame = wheelStartFrame;
     [self hideAllAttributes:YES];
+    scoreButton.hidden = YES;
+    
+    [wineWheelButton setTitle:@"Start" forState:UIControlStateNormal];
+    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+    [wineWheelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     // animation
     [UIView animateWithDuration:0.4 animations:^{
@@ -241,6 +263,7 @@
     }];
     wineWheelImage.transform = CGAffineTransformRotate(wineWheelImage.transform, DEGREES_TO_RADIANS(-wheelDegree));
     [infoScrollView setContentOffset:CGPointZero animated:NO];
+    
     
 }
 
@@ -260,6 +283,39 @@
             att.frame = CGRectMake(0, -200, 320, 50);
         }
     }];
+}
+
+- (void) checkAttributesFufilment {
+    scoreButton.hidden = ![self areAllAttributesFilledIn];
+}
+
+- (BOOL) areAllAttributesFilledIn {
+    BOOL readyToScore = true;
+    for (AttributeSelector *slide in attributeSelectorArray) {
+        if (slide.currentlySelectedButton == 0) {
+            readyToScore = false;
+        }
+    }
+    return readyToScore;
+}
+
+- (void) openScore {
+    [self returnToTasteInfo];
+    
+    NSLog(@"checking score");
+    [wineWheelButton setTitle:[NSString stringWithFormat:@"%d", currentScore] forState:UIControlStateNormal];
+    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:40];
+
+    float red = 255.0;
+    float green = 255.0;
+    if (currentScore >= 50) {
+        red = ((currentScore - 50)/50.0) * 255.0;
+        red = 255.0 - red;
+    } else {
+        green = ((currentScore)/50.0) * 255.0;
+    }
+    [wineWheelButton setTitleColor:[UIColor colorWithRed:red/255.0 green:green/255.0 blue:0 alpha:1] forState:UIControlStateNormal];
+    NSLog(@"red: %f    green: %f", red, green);
 }
 
 

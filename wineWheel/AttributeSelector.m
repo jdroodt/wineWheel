@@ -7,15 +7,17 @@
 //
 
 #import "AttributeSelector.h"
+#import "TasteViewController.h"
 
 @implementation AttributeSelector
 
-- (id)initWithFrame:(CGRect)frame andButtonNames: (NSArray *)bNames andDiscriptions: (NSArray *)dNames;
+- (id)initWithFrame:(CGRect)frame andButtonNames: (NSArray *)bNames andDiscriptions: (NSArray *)dNames andRefViewCon: (TasteViewController *) vc;
 {
     self = [super initWithFrame:frame];
     if (self) {
         buttonNames = [[NSArray alloc]initWithArray:bNames];
         discriptionNames = [[NSArray alloc]initWithArray:dNames];
+        _refViewController = vc;
         self.backgroundColor = [UIColor clearColor];
         [self setupButtonsForIphone];
     }
@@ -85,6 +87,7 @@
         [self clearAllButtons];
         _leftButton.backgroundColor = [UIColor greenColor];
     }
+    [self generalButtonPressed];
 }
 
 - (void) pressedMiddle {
@@ -99,6 +102,7 @@
         [self clearAllButtons];
         _middleButton.backgroundColor = [UIColor greenColor];
     }
+    [self generalButtonPressed];
 }
 
 - (void) pressedRight {
@@ -113,6 +117,7 @@
         [self clearAllButtons];
         _rightButton.backgroundColor = [UIColor greenColor];
     }
+    [self generalButtonPressed];
 }
 
 - (void) unselectedButton {
@@ -120,6 +125,11 @@
     _discriptionOfOption.text = @"";
     _discriptionOfOption.hidden = YES;
     [self clearAllButtons];
+}
+
+- (void) generalButtonPressed {
+    [_refViewController checkAttributesFufilment];
+    // do general button press things
 }
 
 - (void) clearAllButtons {

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AttributeSelector.h"
+@class AttributeSelector;
 
 @interface TasteViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate> {
     float wheelDegree;
@@ -26,8 +26,14 @@
     CGRect scrollViewFrame;
     
     float wheelDiameter;
+    
+    AttributeSelector *selector0, *selector1, *selector2, *selector3, *selector4, *selector5, *selector6;
+    UIButton *scoreButton;
+    int currentScore;
 }
 
-- (IBAction)swipeDetected:(UIGestureRecognizer *)sender;
+@property int completedAttributes;
+
+- (void) checkAttributesFufilment;
 
 @end

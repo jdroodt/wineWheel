@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TasteViewController;
 
 @interface AttributeSelector : UIView {
     NSArray *buttonNames;
@@ -20,9 +21,10 @@
 @property UIButton *rightButton;
 @property UILabel *discriptionOfOption;
 @property int currentlySelectedButton;
+@property (nonatomic, weak) TasteViewController *refViewController;
 
 
-- (id)initWithFrame:(CGRect)frame andButtonNames: (NSArray *)bNames andDiscriptions: (NSArray *)dNames;
+- (id)initWithFrame:(CGRect)frame andButtonNames: (NSArray *)bNames andDiscriptions: (NSArray *)dNames andRefViewCon: (TasteViewController *) vc;
 - (void) unselectedButton;
 
 @end
