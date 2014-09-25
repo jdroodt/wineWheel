@@ -12,6 +12,7 @@
 #define SCREENHEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREENWIDTH ([[UIScreen mainScreen] bounds].size.width)
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+#define IPAD     UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 @interface TasteViewController ()
 
@@ -47,6 +48,7 @@
     isScoringWine = NO;
     currentSegment = 0;
     _completedAttributes = 0;
+    currentTaster = 1;
     
     // scroll view
     scrollViewFrame = CGRectMake(0,(SCREENWIDTH-SCREENWIDTH/5)/2 + 50, SCREENWIDTH, SCREENHEIGHT-(SCREENWIDTH-SCREENWIDTH/5)/2 -50);
@@ -80,9 +82,13 @@
     wineWheelButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [wineWheelButton addTarget:self action:@selector(tastingPressed) forControlEvents:UIControlEventTouchUpInside];
     [wineWheelButton setTitle:@"Start" forState:UIControlStateNormal];
-    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
-    [wineWheelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [wineWheelButton setBackgroundImage:[UIImage imageNamed:@"wineWheelStraight.png"] forState:UIControlStateNormal];
+    int writeSize = 21;
+    if (IPAD) {
+        writeSize = 40;
+    }
+    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:writeSize];
+    [wineWheelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [wineWheelButton setBackgroundImage:[UIImage imageNamed:@"wineWheelHenk.png"] forState:UIControlStateNormal];
     wineWheelButton.frame = wheelStartFrame;
     [self.view addSubview:wineWheelButton];
     
@@ -90,7 +96,7 @@
     wheelEndFrame = CGRectMake(-SCREENWIDTH/4, SCREENHEIGHT-(SCREENWIDTH*1.5)*(0.4), SCREENWIDTH*1.5, SCREENWIDTH*1.5);
     
     wineWheelImage = [[UIImageView alloc]initWithFrame:wheelStartFrame];
-    wineWheelImage.image = [UIImage imageNamed:@"wineWheelStraight.png"];
+    wineWheelImage.image = [UIImage imageNamed:@"wineWheelHenk.png"];
     [self.view addSubview:wineWheelImage];
     wineWheelImage.hidden = YES;
     
@@ -113,6 +119,12 @@
     
     
     // attribute selectors
+    if (IPAD) {
+        attributeHeight = 300;
+    } else {
+        attributeHeight = 50;
+    }
+    
     // colour
     NSArray *names0 = [[NSArray alloc]initWithObjects:@"Unappealing",@"Non-descript", @"Appealing", nil];
     NSArray *dis0 = [[NSArray alloc]initWithObjects:
@@ -120,7 +132,7 @@
     @"discription of the middle button... this will give the user a bit more info on what it means ",
     @"discription of the right button... this will give the user a bit more info on what it means ",
     nil];
-    selector0 = [[AttributeSelector alloc]initWithFrame:CGRectMake(0, 100, 320, 50) andButtonNames:names0 andDiscriptions:dis0 andRefViewCon: self];
+    selector0 = [[AttributeSelector alloc]initWithFrame:CGRectMake(0, 100, SCREENWIDTH, attributeHeight) andButtonNames:names0 andDiscriptions:dis0 andRefViewCon: self];
     [self.view addSubview:selector0];
     
     // aroma
@@ -130,7 +142,7 @@
                     @"discription of the middle button... this will give the user a bit more info on what it means ",
                     @"discription of the right button... this will give the user a bit more info on what it means ",
                     nil];
-    selector1 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names1 andDiscriptions:dis1 andRefViewCon: self];
+    selector1 = [[AttributeSelector alloc]initWithFrame:CGRectMake(SCREENWIDTH, 100, SCREENWIDTH, attributeHeight) andButtonNames:names1 andDiscriptions:dis1 andRefViewCon: self];
     [self.view addSubview:selector1];
     
     // flavour
@@ -140,7 +152,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    selector2 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names2 andDiscriptions:dis2 andRefViewCon: self];
+    selector2 = [[AttributeSelector alloc]initWithFrame:CGRectMake(SCREENWIDTH, 100, SCREENWIDTH, attributeHeight) andButtonNames:names2 andDiscriptions:dis2 andRefViewCon: self];
     [self.view addSubview:selector2];
     
     // complexity
@@ -150,7 +162,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    selector3 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names3 andDiscriptions:dis3 andRefViewCon: self];
+    selector3 = [[AttributeSelector alloc]initWithFrame:CGRectMake(SCREENWIDTH, 100, SCREENWIDTH, attributeHeight) andButtonNames:names3 andDiscriptions:dis3 andRefViewCon: self];
     [self.view addSubview:selector3];
     
     // balance
@@ -160,7 +172,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    selector4 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names4 andDiscriptions:dis4 andRefViewCon: self];
+    selector4 = [[AttributeSelector alloc]initWithFrame:CGRectMake(SCREENWIDTH, 100, SCREENWIDTH, attributeHeight) andButtonNames:names4 andDiscriptions:dis4 andRefViewCon: self];
     [self.view addSubview:selector4];
     
     // texuture
@@ -170,7 +182,7 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    selector5 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names5 andDiscriptions:dis5 andRefViewCon: self];
+    selector5 = [[AttributeSelector alloc]initWithFrame:CGRectMake(SCREENWIDTH, 100, SCREENWIDTH, attributeHeight) andButtonNames:names5 andDiscriptions:dis5 andRefViewCon: self];
     [self.view addSubview:selector5];
     
     // finish
@@ -180,13 +192,13 @@
                      @"discription of the middle button... this will give the user a bit more info on what it means ",
                      @"discription of the right button... this will give the user a bit more info on what it means ",
                      nil];
-    selector6 = [[AttributeSelector alloc]initWithFrame:CGRectMake(320, 100, 320, 50) andButtonNames:names6 andDiscriptions:dis6 andRefViewCon: self];
+    selector6 = [[AttributeSelector alloc]initWithFrame:CGRectMake(SCREENWIDTH, 100, SCREENWIDTH, attributeHeight) andButtonNames:names6 andDiscriptions:dis6 andRefViewCon: self];
     [self.view addSubview:selector6];
     
     attributeSelectorArray = [[NSArray alloc]initWithObjects:selector0, selector1, selector2, selector3, selector4, selector5, selector6, nil];
     [self hideAllAttributes:NO];
     
-    scoreButton = [[UIButton alloc] initWithFrame:CGRectMake(90, 30, 140, 50)];
+    scoreButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH/2 - 140/2, 30, 140, 50)];
     scoreButton.backgroundColor = [UIColor colorWithRed:0.5 green:1 blue:0.5 alpha:1];
     [scoreButton setTitle:@"Check score" forState:UIControlStateNormal];
     [scoreButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -194,18 +206,44 @@
     scoreButton.hidden = YES;
     [self.view addSubview:scoreButton];
     
-    currentScore = 20;
+    currentScore = 0;
     
+    // profile pictures
     
+    averageButton = [[UIButton alloc]initWithFrame:CGRectMake( SCREENWIDTH/10, wheelDiameter/2 + 30, SCREENWIDTH/5, SCREENWIDTH/5)];
+    [averageButton setBackgroundImage:[UIImage imageNamed:@"averageSelected.png"] forState:UIControlStateNormal];
+    [averageButton addTarget:self action:@selector(averagePressed) forControlEvents:UIControlEventTouchUpInside];
+    [infoScrollView addSubview:averageButton];
+    
+    rickyButton = [[UIButton alloc]initWithFrame:CGRectMake(averageButton.frame.origin.x + averageButton.frame.size.width + SCREENWIDTH/10, wheelDiameter/2 + 30, SCREENWIDTH/5, SCREENWIDTH/5)];
+    [rickyButton setBackgroundImage:[UIImage imageNamed:@"ricky.png"] forState:UIControlStateNormal];
+    [rickyButton addTarget:self action:@selector(rickyPressed) forControlEvents:UIControlEventTouchUpInside];
+    [infoScrollView addSubview:rickyButton];
+    
+    alisterButton = [[UIButton alloc]initWithFrame:CGRectMake(rickyButton.frame.origin.x + rickyButton.frame.size.width + SCREENWIDTH/10, wheelDiameter/2 + 30, SCREENWIDTH/5, SCREENWIDTH/5)];
+    [alisterButton setBackgroundImage:[UIImage imageNamed:@"alister.png"] forState:UIControlStateNormal];
+    [alisterButton addTarget:self action:@selector(alisterPressed) forControlEvents:UIControlEventTouchUpInside];
+    [infoScrollView addSubview:alisterButton];
+    
+    henkButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREENWIDTH/10, averageButton.frame.origin.y + averageButton.frame.size.height + SCREENHEIGHT/17, SCREENWIDTH/5, SCREENWIDTH/5)];
+    [henkButton setBackgroundImage:[UIImage imageNamed:@"henk.png"] forState:UIControlStateNormal];
+    [henkButton addTarget:self action:@selector(henkPressed) forControlEvents:UIControlEventTouchUpInside];
+    [infoScrollView addSubview:henkButton];
+    
+    jdButton = [[UIButton alloc]initWithFrame:CGRectMake(rickyButton.frame.origin.x, averageButton.frame.origin.y + averageButton.frame.size.height + SCREENHEIGHT/17, SCREENWIDTH/5, SCREENWIDTH/5)];
+    [jdButton setBackgroundImage:[UIImage imageNamed:@"jdSelected.png"] forState:UIControlStateNormal];
+    [jdButton addTarget:self action:@selector(jdPressed) forControlEvents:UIControlEventTouchUpInside];
+    [infoScrollView addSubview:jdButton];
+
     
     // ======== demonstration code ========
-    for (int i = wheelDiameter/2; i < 800; i += 80 ) {
-        UILabel *thing = [[UILabel alloc]initWithFrame:CGRectMake(50, i, 320-100, 20)];
-        thing.text = @"Place holder. cultivar or something";
-        thing.font = [UIFont systemFontOfSize:18];
-        thing.textColor = [UIColor blackColor];
-        [infoScrollView addSubview:thing];
-    }
+//    for (int i = wheelDiameter/2; i < 800; i += 80 ) {
+//        UILabel *thing = [[UILabel alloc]initWithFrame:CGRectMake(50, i, SCREENWIDTH-100, 20)];
+//        thing.text = @"Place holder. cultivar or something";
+//        thing.font = [UIFont systemFontOfSize:18];
+//        thing.textColor = [UIColor blackColor];
+//        [infoScrollView addSubview:thing];
+//    }
     
 }
 
@@ -231,7 +269,7 @@
         backButton.frame= CGRectMake(-50, backButton.frame.origin.y, backButton.frame.size.width, backButton.frame.size.height);
         downButton.frame = CGRectMake(SCREENWIDTH/2-25, SCREENHEIGHT-60, 50, 50);
         infoScrollView.frame = CGRectMake(0, SCREENHEIGHT, scrollViewFrame.size.width, scrollViewFrame.size.height);
-        ((AttributeSelector *)attributeSelectorArray[0]).frame = CGRectMake(0, 100, 320, 50);
+        ((AttributeSelector *)attributeSelectorArray[0]).frame = CGRectMake(0, 100, SCREENWIDTH, attributeHeight);
         scoreButton.alpha = 1;
     }];
     
@@ -250,8 +288,12 @@
     scoreButton.hidden = YES;
     
     [wineWheelButton setTitle:@"Start" forState:UIControlStateNormal];
-    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
-    [wineWheelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    int writeSize = 21;
+    if (IPAD) {
+        writeSize = 40;
+    }
+    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:writeSize];
+    [wineWheelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     // animation
     [UIView animateWithDuration:0.4 animations:^{
@@ -280,13 +322,13 @@
     
     [UIView animateWithDuration:animationTime animations:^{
         for (AttributeSelector *att in attributeSelectorArray) {
-            att.frame = CGRectMake(0, -200, 320, 50);
+            att.frame = CGRectMake(0, -400, SCREENWIDTH, attributeHeight);
         }
     }];
 }
 
 - (void) checkAttributesFufilment {
-    scoreButton.hidden = ![self areAllAttributesFilledIn];
+    scoreButton.hidden = ![self areAllAttributesFilledIn];    // comment a ! infront to bring out of testing mode
 }
 
 - (BOOL) areAllAttributesFilledIn {
@@ -301,11 +343,31 @@
 
 - (void) openScore {
     [self returnToTasteInfo];
+    [self calculateScore];
+}
+
+- (void) calculateScore {
+    // calculating score
+    currentScore = 0;
+    
+    NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"UserProperties" ofType:@"plist"];
+    NSArray *users = [NSArray arrayWithContentsOfFile:plistPath];
+    
+    for (int i = 0; i < [attributeSelectorArray count]; i++) {
+        int selectedAttribute = [attributeSelectorArray[i] currentlySelectedButton];
+        currentScore += [users[currentTaster][i][0] floatValue] * [users[currentTaster][i][selectedAttribute] floatValue];
+    }
+    
     
     NSLog(@"checking score");
-    [wineWheelButton setTitle:[NSString stringWithFormat:@"%d", currentScore] forState:UIControlStateNormal];
-    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:40];
-
+    [wineWheelButton setTitle:[NSString stringWithFormat:@"%.f", round(currentScore) ] forState:UIControlStateNormal];
+    
+    int writeSize = 40;
+    if (IPAD) {
+        writeSize = 70;
+    }
+    wineWheelButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:writeSize];
+    
     float red = 255.0;
     float green = 255.0;
     if (currentScore >= 50) {
@@ -317,7 +379,6 @@
     [wineWheelButton setTitleColor:[UIColor colorWithRed:red/255.0 green:green/255.0 blue:0 alpha:1] forState:UIControlStateNormal];
     NSLog(@"red: %f    green: %f", red, green);
 }
-
 
 // scroll delegate
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -341,14 +402,14 @@
         if (currentSegment > 6) {
             currentSegment = 0;
         }
-        ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(340, 100, 320, 50);
-        ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(0, 100, 320, 50);
+        ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(SCREENWIDTH+20, 100, SCREENWIDTH, attributeHeight);
+        ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(0, 100, SCREENWIDTH, attributeHeight);
         
         
         [UIView animateWithDuration:0.5 animations:^{
             wineWheelImage.transform = CGAffineTransformRotate(wineWheelImage.transform, DEGREES_TO_RADIANS(-51.4285));
-            ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(-340, 100, 320, 50);
-            ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(0, 100, 320, 50);
+            ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(-SCREENWIDTH-20, 100, SCREENWIDTH, attributeHeight);
+            ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(0, 100, SCREENWIDTH, attributeHeight);
             
         }];
     }
@@ -364,18 +425,79 @@
         if (currentSegment < 0) {
             currentSegment = 6;
         }
-        ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(-340, 100, 320, 50);
-        ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(0, 100, 320, 50);
+        ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(-SCREENWIDTH-20, 100, SCREENWIDTH, attributeHeight);
+        ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(0, 100, SCREENWIDTH, attributeHeight);
         
         [UIView animateWithDuration:0.4 animations:^{
             wineWheelImage.transform = CGAffineTransformRotate(wineWheelImage.transform, DEGREES_TO_RADIANS(51.4285));
-            ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(340, 100, 320, 50);
-            ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(0, 100, 320, 50);
+            ((AttributeSelector *)attributeSelectorArray[lastSegment]).frame = CGRectMake(SCREENWIDTH+20, 100, SCREENWIDTH, attributeHeight);
+            ((AttributeSelector *)attributeSelectorArray[currentSegment]).frame = CGRectMake(0, 100, SCREENWIDTH, attributeHeight);
         }];
     }
 }
 
+- (UIImageView*) makeCircularImage: (UIImageView*) imageView {
+    UIImage *image = imageView.image;
+    
+    // Begin a new image that will be the new image with the rounded corners
+    // (here with the size of an UIImageView)
+    UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, NO, [UIScreen mainScreen].scale);
+    
+    // Add a clip before drawing anything, in the shape of an rounded rect
+    [[UIBezierPath bezierPathWithRoundedRect:imageView.bounds
+                                cornerRadius:10.0] addClip];
+    // Draw your image
+    [image drawInRect:imageView.bounds];
+    
+    // Get the image, here setting the UIImageView image
+    imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Lets forget about that we were drawing
+    UIGraphicsEndImageContext();
+    
+    return imageView;
+}
 
+- (void) henkPressed {
+    currentTaster = 1;
+    [self deselectProfiles];
+    [henkButton setBackgroundImage:[UIImage imageNamed:@"henkSelected.png"] forState:UIControlStateNormal];
+}
+
+- (void) rickyPressed {
+    currentTaster = 2;
+    [self deselectProfiles];
+    [rickyButton setBackgroundImage:[UIImage imageNamed:@"rickySelected.png"] forState:UIControlStateNormal];
+}
+
+- (void) alisterPressed {
+    currentTaster = 3;
+    [self deselectProfiles];
+    [alisterButton setBackgroundImage:[UIImage imageNamed:@"alisterSelected.png"] forState:UIControlStateNormal];
+}
+
+- (void) averagePressed {
+    currentTaster = 0;
+    [self deselectProfiles];
+    [averageButton setBackgroundImage:[UIImage imageNamed:@"averageSelected.png"] forState:UIControlStateNormal];
+}
+
+- (void) jdPressed {
+    currentTaster = 4;
+    [self deselectProfiles];
+    [jdButton setBackgroundImage:[UIImage imageNamed:@"jd.png"] forState:UIControlStateNormal];
+}
+
+- (void) deselectProfiles {
+    if ([self areAllAttributesFilledIn]) {
+        [self calculateScore];
+    }
+    [henkButton setBackgroundImage:[UIImage imageNamed:@"henk.png"] forState:UIControlStateNormal];
+    [rickyButton setBackgroundImage:[UIImage imageNamed:@"ricky.png"] forState:UIControlStateNormal];
+    [alisterButton setBackgroundImage:[UIImage imageNamed:@"alister.png"] forState:UIControlStateNormal];
+    [averageButton setBackgroundImage:[UIImage imageNamed:@"average.png"] forState:UIControlStateNormal];
+    [jdButton setBackgroundImage:[UIImage imageNamed:@"jdSelected.png"] forState:UIControlStateNormal];
+}
 
 - (void)didReceiveMemoryWarning
 {

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D260DE2A197A2A160079888E /* henk.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE24197A2A160079888E /* henk.png */; };
+		D260DE2B197A2A160079888E /* henkSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE25197A2A160079888E /* henkSelected.png */; };
+		D260DE2C197A2A160079888E /* ricky.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE26197A2A160079888E /* ricky.png */; };
+		D260DE2D197A2A160079888E /* rickySelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE27197A2A160079888E /* rickySelected.png */; };
+		D260DE2E197A2A160079888E /* alister.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE28197A2A160079888E /* alister.png */; };
+		D260DE2F197A2A160079888E /* alisterSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE29197A2A160079888E /* alisterSelected.png */; };
+		D260DE33197A333C0079888E /* Unknown-1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D260DE32197A333C0079888E /* Unknown-1.jpeg */; };
+		D260DE35197A37A30079888E /* wineWheelHenk.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE34197A37A30079888E /* wineWheelHenk.png */; };
+		D260DE38197A87980079888E /* average.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE36197A87980079888E /* average.png */; };
+		D260DE39197A87980079888E /* averageSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE37197A87980079888E /* averageSelected.png */; };
+		D260DE3C197A960B0079888E /* jdSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE3A197A960B0079888E /* jdSelected.png */; };
+		D260DE3D197A960B0079888E /* jd.png in Resources */ = {isa = PBXBuildFile; fileRef = D260DE3B197A960B0079888E /* jd.png */; };
 		D27F94301967C1C000B32A67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27F942F1967C1C000B32A67 /* Foundation.framework */; };
 		D27F94321967C1C000B32A67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27F94311967C1C000B32A67 /* CoreGraphics.framework */; };
 		D27F94341967C1C000B32A67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27F94331967C1C000B32A67 /* UIKit.framework */; };
@@ -28,6 +40,7 @@
 		D2DBBFAF197108490059713D /* wineWheel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DBBFAE197108490059713D /* wineWheel.m */; };
 		D2DBBFB3197156910059713D /* wineWheelStraight.png in Resources */ = {isa = PBXBuildFile; fileRef = D2DBBFB2197156910059713D /* wineWheelStraight.png */; };
 		D2DBBFB9197169C60059713D /* AttributeSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = D2DBBFB8197169C60059713D /* AttributeSelector.m */; };
+		D2DBBFBD1977C6A40059713D /* UserProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2DBBFBC1977C6A40059713D /* UserProperties.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +54,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D260DE24197A2A160079888E /* henk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = henk.png; sourceTree = "<group>"; };
+		D260DE25197A2A160079888E /* henkSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = henkSelected.png; sourceTree = "<group>"; };
+		D260DE26197A2A160079888E /* ricky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ricky.png; sourceTree = "<group>"; };
+		D260DE27197A2A160079888E /* rickySelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rickySelected.png; sourceTree = "<group>"; };
+		D260DE28197A2A160079888E /* alister.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alister.png; sourceTree = "<group>"; };
+		D260DE29197A2A160079888E /* alisterSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alisterSelected.png; sourceTree = "<group>"; };
+		D260DE32197A333C0079888E /* Unknown-1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Unknown-1.jpeg"; sourceTree = "<group>"; };
+		D260DE34197A37A30079888E /* wineWheelHenk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineWheelHenk.png; sourceTree = SOURCE_ROOT; };
+		D260DE36197A87980079888E /* average.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = average.png; sourceTree = SOURCE_ROOT; };
+		D260DE37197A87980079888E /* averageSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = averageSelected.png; sourceTree = SOURCE_ROOT; };
+		D260DE3A197A960B0079888E /* jdSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jdSelected.png; path = ../../jdSelected.png; sourceTree = "<group>"; };
+		D260DE3B197A960B0079888E /* jd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jd.png; path = ../../jd.png; sourceTree = "<group>"; };
 		D27F942C1967C1C000B32A67 /* wineWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wineWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D27F942F1967C1C000B32A67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D27F94311967C1C000B32A67 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,6 +95,7 @@
 		D2DBBFB2197156910059713D /* wineWheelStraight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wineWheelStraight.png; sourceTree = SOURCE_ROOT; };
 		D2DBBFB7197169C60059713D /* AttributeSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeSelector.h; sourceTree = "<group>"; };
 		D2DBBFB8197169C60059713D /* AttributeSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeSelector.m; sourceTree = "<group>"; };
+		D2DBBFBC1977C6A40059713D /* UserProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserProperties.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +196,18 @@
 		D27F946D1967C7B400B32A67 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D260DE3A197A960B0079888E /* jdSelected.png */,
+				D260DE3B197A960B0079888E /* jd.png */,
+				D260DE36197A87980079888E /* average.png */,
+				D260DE37197A87980079888E /* averageSelected.png */,
+				D260DE34197A37A30079888E /* wineWheelHenk.png */,
+				D260DE32197A333C0079888E /* Unknown-1.jpeg */,
+				D260DE24197A2A160079888E /* henk.png */,
+				D260DE25197A2A160079888E /* henkSelected.png */,
+				D260DE26197A2A160079888E /* ricky.png */,
+				D260DE27197A2A160079888E /* rickySelected.png */,
+				D260DE28197A2A160079888E /* alister.png */,
+				D260DE29197A2A160079888E /* alisterSelected.png */,
 				D2DBBFB2197156910059713D /* wineWheelStraight.png */,
 				D27F946E1967C83F00B32A67 /* backButton.png */,
 				D27F94721967DB7C00B32A67 /* downButton.png */,
@@ -183,6 +221,7 @@
 			children = (
 				D2DBBFAD197108490059713D /* wineWheel.h */,
 				D2DBBFAE197108490059713D /* wineWheel.m */,
+				D2DBBFBC1977C6A40059713D /* UserProperties.plist */,
 			);
 			name = objects;
 			sourceTree = "<group>";
@@ -284,11 +323,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2DBBFB3197156910059713D /* wineWheelStraight.png in Resources */,
+				D260DE3C197A960B0079888E /* jdSelected.png in Resources */,
+				D260DE2F197A2A160079888E /* alisterSelected.png in Resources */,
+				D260DE35197A37A30079888E /* wineWheelHenk.png in Resources */,
+				D260DE2E197A2A160079888E /* alister.png in Resources */,
 				D27F94461967C1C000B32A67 /* Main_iPad.storyboard in Resources */,
+				D260DE2A197A2A160079888E /* henk.png in Resources */,
+				D260DE38197A87980079888E /* average.png in Resources */,
+				D260DE2D197A2A160079888E /* rickySelected.png in Resources */,
+				D2DBBFBD1977C6A40059713D /* UserProperties.plist in Resources */,
 				D27F944B1967C1C000B32A67 /* Images.xcassets in Resources */,
+				D260DE33197A333C0079888E /* Unknown-1.jpeg in Resources */,
 				D27F946F1967C83F00B32A67 /* backButton.png in Resources */,
+				D260DE39197A87980079888E /* averageSelected.png in Resources */,
 				D27F94431967C1C000B32A67 /* Main_iPhone.storyboard in Resources */,
+				D260DE3D197A960B0079888E /* jd.png in Resources */,
 				D27F943A1967C1C000B32A67 /* InfoPlist.strings in Resources */,
+				D260DE2B197A2A160079888E /* henkSelected.png in Resources */,
+				D260DE2C197A2A160079888E /* ricky.png in Resources */,
 				D27F94731967DB7C00B32A67 /* downButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +439,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -403,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -426,6 +479,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -436,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -453,8 +507,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wineWheel/wineWheel-Prefix.pch";
 				INFOPLIST_FILE = "wineWheel/wineWheel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "54e641f9-6ef3-43fe-92cf-52788e69bbff";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -470,8 +525,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "wineWheel/wineWheel-Prefix.pch";
 				INFOPLIST_FILE = "wineWheel/wineWheel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "54e641f9-6ef3-43fe-92cf-52788e69bbff";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

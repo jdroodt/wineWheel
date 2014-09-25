@@ -13,3 +13,18 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @end
+
+
+
+
+/*
+
+plist 
+ 
+ 0 - average
+ 1 - henk
+ 2 - ricky
+ 3 - alister
+ 4 - JD
+
+*/

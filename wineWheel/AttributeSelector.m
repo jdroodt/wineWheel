@@ -11,6 +11,8 @@
 
 @implementation AttributeSelector
 
+#define IPAD     UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+
 - (id)initWithFrame:(CGRect)frame andButtonNames: (NSArray *)bNames andDiscriptions: (NSArray *)dNames andRefViewCon: (TasteViewController *) vc;
 {
     self = [super initWithFrame:frame];
@@ -19,10 +21,66 @@
         discriptionNames = [[NSArray alloc]initWithArray:dNames];
         _refViewController = vc;
         self.backgroundColor = [UIColor clearColor];
-        [self setupButtonsForIphone];
+        
+        if (IPAD) {
+            [self setupButtonsForIpad];
+        } else {
+            [self setupButtonsForIphone];
+        }
     }
     return self;
 }
+
+- (void) setupButtonsForIpad {  // 768 x 1024
+    _currentlySelectedButton = 0;
+    buttonFontSize = 20;
+    
+    _leftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_leftButton addTarget:self action:@selector(pressedLeft) forControlEvents:UIControlEventTouchUpInside];
+    [_leftButton setTitle:buttonNames[0] forState:UIControlStateNormal];
+    [_leftButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:buttonFontSize]];
+    _leftButton.titleLabel.numberOfLines = 2;
+    _leftButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _leftButton.frame = CGRectMake(74, 0, 175, 150);
+    _leftButton.backgroundColor = [UIColor whiteColor];
+    _leftButton.layer.borderWidth = 0.5f;
+    _leftButton.layer.cornerRadius = 5;
+    [_leftButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self addSubview:_leftButton];
+    
+    _middleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_middleButton addTarget:self action:@selector(pressedMiddle) forControlEvents:UIControlEventTouchUpInside];
+    [_middleButton setTitle:buttonNames[1] forState:UIControlStateNormal];
+    [_middleButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:buttonFontSize]];
+    _middleButton.titleLabel.numberOfLines = 2;
+    _middleButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _middleButton.frame = CGRectMake(74 + 175 + 50, 0, 175, 150);
+    _middleButton.backgroundColor = [UIColor whiteColor];
+    _middleButton.layer.borderWidth = 0.5f;
+    _middleButton.layer.cornerRadius = 5;
+    [_middleButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self addSubview:_middleButton];
+    
+    _rightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_rightButton addTarget:self action:@selector(pressedRight) forControlEvents:UIControlEventTouchUpInside];
+    [_rightButton setTitle:buttonNames[2] forState:UIControlStateNormal];
+    [_rightButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:buttonFontSize]];
+    _rightButton.titleLabel.numberOfLines = 2;
+    _rightButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _rightButton.frame = CGRectMake(74 + 175*2 + 50*2, 0, 175, 150);
+    _rightButton.backgroundColor = [UIColor whiteColor];
+    _rightButton.layer.borderWidth = 0.5f;
+    _rightButton.layer.cornerRadius = 5;
+    [_rightButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [self addSubview:_rightButton];
+    
+    // label
+    _discriptionOfOption = [[UILabel alloc]initWithFrame:CGRectMake(134, _leftButton.frame.size.height+50, 500, 100)];
+    _discriptionOfOption.numberOfLines = 4;
+    [_discriptionOfOption setFont:[UIFont fontWithName:@"HelveticaNeue" size:20]];
+    [self addSubview:_discriptionOfOption];
+}
+
 
 - (void) setupButtonsForIphone {
     _currentlySelectedButton = 0;

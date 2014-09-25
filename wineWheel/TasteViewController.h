@@ -29,7 +29,12 @@
     
     AttributeSelector *selector0, *selector1, *selector2, *selector3, *selector4, *selector5, *selector6;
     UIButton *scoreButton;
-    int currentScore;
+    float currentScore;
+    
+    float attributeHeight;
+    
+    UIButton *henkButton, *rickyButton, *alisterButton, *averageButton, *jdButton;
+    int currentTaster;
 }
 
 @property int completedAttributes;
