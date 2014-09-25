@@ -48,7 +48,7 @@
     isScoringWine = NO;
     currentSegment = 0;
     _completedAttributes = 0;
-    currentTaster = 1;
+    currentTaster = 0;
     
     // scroll view
     scrollViewFrame = CGRectMake(0,(SCREENWIDTH-SCREENWIDTH/5)/2 + 50, SCREENWIDTH, SCREENHEIGHT-(SCREENWIDTH-SCREENWIDTH/5)/2 -50);
@@ -458,6 +458,8 @@
     return imageView;
 }
 
+
+// just give profile buttons a tag and call one method
 - (void) henkPressed {
     currentTaster = 1;
     [self deselectProfiles];
